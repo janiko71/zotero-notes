@@ -109,7 +109,7 @@ class Zotero_Notes_ReferencesList {
         }
         
         /** Now we have to set a name for the HTML anchor we'll use to navigate */
-        $current_reference->set_anchor( "zotero_notes_-p" . $the_ID . "-r" . $current_reference->get_ref_num() . "-o" . $current_reference->get_occ_nb() );
+        $current_reference->set_anchor( "zotero-ref-p" . $the_ID . "-r" . $current_reference->get_ref_num() . "-o" . $current_reference->get_occ_nb() );
 
         return $current_reference;
     }
@@ -123,7 +123,7 @@ class Zotero_Notes_ReferencesList {
         ob_start();
         $current_reference = $this->handle_reference( new Zotero_Notes_Citation( $atts, $content ) );
         $res = "<sup style='font-size:8px;vertical-align:super' id='note-" . $current_reference->get_anchor() . "'>";
-        $res .= "<a href='#zotero_notes_-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>[" . $current_reference->get_ref_num() . "]</a></sup>";
+        $res .= "<a href='#zotero-ref-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>[" . $current_reference->get_ref_num() . "]</a></sup>";
         print( $res );
 
         return ob_get_clean();
@@ -147,7 +147,7 @@ class Zotero_Notes_ReferencesList {
         if ( $count > 0 ) {
 
             /** Title */
-            $content .= "<h3 id='references-head' class='footer_references'>" . __('References','zotero_notes') . "</h3>";
+            $content .= "<h3 id='references-head' class='footer_references'>" . __('References','zotero-notes') . "</h3>";
     
             /** Reference table */
             $liste = $this->_liste_references[$the_ID];
