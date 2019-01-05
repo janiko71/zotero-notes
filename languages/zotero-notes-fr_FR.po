@@ -1,0 +1,84 @@
+# Translation of Plugin - Zotero Notes in French (France)
+# This file is distributed under the same license as the Plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Zotero_Notes V0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2017-02-06 00:45+0100\n"
+"Last-Translator: janiko <jean@geba.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"Language: fr_FR\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#
+msgid "References"
+msgstr "Références"
+
+# 
+msgid "on"
+msgstr "sur"
+
+# 
+msgid "read on"
+msgstr "consulté le"
+
+# admin
+msgid "Zotero Notes plugin Page"
+msgstr "Page du plugin Zotero Notes"
+
+# admin
+msgid "Zotero Notes Plugin Settings"
+msgstr "Réglages du Plugin"
+
+# admin
+msgid "Shortcode Name"
+msgstr "Nom du shortcode"
+
+# admin
+msgid "Zotero User ID (API)"
+msgstr "ID utilisateur Zotero (API)"
+
+# admin
+msgid "Zotero Private Key (API)"
+msgstr "Clé privée Zotero (API)"
+
+# admin
+msgid "Enter your settings below:"
+msgstr "Entrez vos réglages ci-dessous :"
+
+# admin/help
+msgid "This extension helps you to include footnotes references in your posts. "
+msgstr "Cette extension vous permet d'inclure des références en notes de bas de page dans vos articles. "
+
+# admin/help
+msgid "You can change in this page the shortcode and the attributes used to construct references. "
+msgstr "Vous pouvez changer ici le <i>shortcode</i> et les attributs utilisés pour construire les références. "
+
+# admin/help
+msgid "But you should keep in mind the posts written with the old codes won't be parsed anymore! "
+msgstr "Toutefois gardez à l'esprit que les références écrites avec les anciens codes ne fonctionneront plus ! "
+
+# admin/help
+msgid "Consequently, you should only change these settings before using this extension. "
+msgstr "En conséquence, vous ne devriez modifier ces codes qu'au démarrage, avant d'utiliser l'extension. "
+
+# admin/help
+msgid "With the <i>defaults</i> settings, your shortcode should look like this: "
+msgstr "Avec les réglages par défaut, votre <i>shortcode</i> devrait ressembler à ceci : "
+
+# admin/help
+# msgid "<code>...blabla[zref]author=Clint EASTWOOD|title=Magnum Force|url=http://someurl[/zref]blabla...</code>"
+# msgstr ""
+
+# admin/help
+msgid "A footnote will be  added (automatically) at the end of the post."
+msgstr "Une note de bas de page sera automatiquement ajoutée (à la fin de l'article)."
