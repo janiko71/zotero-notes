@@ -26,6 +26,7 @@ class Zotero_Notes_DataCollector {
      */
 
     public $_author;
+    public $_creatorSummary;
     public $_authorList;
     public $_authorCount;
     public $_url;
@@ -92,7 +93,7 @@ class Zotero_Notes_DataCollector {
         curl_setopt($curl, CURLOPT_HTTPHEADER, array("Zotero-API-Key: " . $zotero_key));
        
         $response = curl_exec($curl);
-        
+
         curl_close($curl);
 
         return $response;
@@ -129,7 +130,8 @@ class Zotero_Notes_DataCollector {
 
         $zotero_api_response = json_decode($json, true);
         $zotero_data = $zotero_api_response["data"];
-
+        $zotero_meta = $zotero_api_response["meta"];
+        
         /**
          * Here, $zotero_api_response contains a lot of tags with information. 
          * Let's gather the most relevant for our citations.
@@ -151,6 +153,9 @@ class Zotero_Notes_DataCollector {
             $this->_authorList = json_encode($list);
             $this->_authorCount = count($list);
         }*/
+        
+        // Creator summary, if exists
+        $this->_creatorSummary = $zotero_meta["creatorSummary"]; 
         
         // The author
         $this->_authorList = $zotero_data["creators"];

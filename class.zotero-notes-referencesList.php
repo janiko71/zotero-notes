@@ -34,11 +34,12 @@ class Zotero_Notes_ReferencesList {
     function get_reference_by_name( $id, $name ) {
 
         /** Lookup in the reference list if there's a reference with the provided name for the post #id */
-        $list = $this->_liste_references[$id];
+        $list = $this->_liste_references[ $id ];
         $result = null;
+        
         if ( $list != null ) {
-            foreach ($list as $ref) {
-                if ( strcmp($ref->get_name(), $name) == 0 ) {
+            foreach ( $list as $ref ) {
+                if ( strcmp($ref->get_name(), $name ) == 0 ) {
                     $result = $ref;
                     break;
                 }
@@ -60,9 +61,9 @@ class Zotero_Notes_ReferencesList {
      
     function add_reference( $the_ID, $reference ) {
 
-        $ref_num = count($this->_liste_references[$the_ID]) + 1;
+        $ref_num = count( $this->_liste_references[ $the_ID ] ) + 1;
         $reference->set_ref_num( $ref_num );
-        $this->_liste_references[$the_ID][] = $reference;
+        $this->_liste_references[ $the_ID ][] = $reference;
 
         return $reference;
     }
@@ -83,7 +84,7 @@ class Zotero_Notes_ReferencesList {
         $the_ID = get_the_ID();
         $current_reference = null;
 
-        /** Does this reference have a name ? */
+        /** Does this reference have a name? */
         $reference_name = $reference->get_name();
 
         if ( $reference_name == "" ) {

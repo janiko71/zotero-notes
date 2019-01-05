@@ -46,6 +46,7 @@ class Zotero_Notes_Citation {
     private $_content_id;
     private $_title;
     private $_author;
+    private $_creatorSummary;
     private $_authorList;
     private $_authorCount;    
     private $_date;
@@ -150,46 +151,87 @@ class Zotero_Notes_Citation {
         else
             $html .= "<a style='border-bottom: 1px solid white;' href='#note-zotero-ref-p".$this->get_post_id()."-r".$this->get_ref_num()."-o1'>↑ </a>";
         if ( isset($this->_title) ) {
+            
+            /**
+             * Language, if exists
+             */
+             
             if ( isset($this->_lang)) {
                 if ($this->_lang != "") {
-                    $html .= " (".$this->_lang.")";
+                    $html .= " (".$this->_lang.") ";
                 }
             }
-            $html .= "<span class='zotero_ref_author'>";
+            
+            /**
+             * A complex part: the author(s)
+             */
+             
+            $author = "";
+
             if ( isset($this->_author) ) {
-                $html .= " ".$this->_author.", ";
-            }            
-            if ( isset($this->_authorList) ) {
+                $author = $this->_author.", ";
+            } else if ( isset($this->_authorList) ) {
                 $authorList = $this->_authorList; 
                 $authorCount = count($authorList);
                 if ($authorCount == 1) {
                     $author = $authorList[0]['firstName'] . " " . $authorList[0]['lastName'];
-                    $html .= " ".$author.", ";
+                    
                 } else if ($authorCount > 1) {
-                    for ($i = 0; $i < $authorCount; $i++) {
-                        $author = $authorList[$i]['firstName'] . " " . $authorList[$i]['lastName'];
-                        $html .= " ".$author.", ";
+                    if ( isset($this->_creatorSummary) ) {
+                        $author = $this->_creatorSummary;
+                    } else {
+                        for ($i = 0; $i < $authorCount; $i++) {
+                            $author = $authorList[$i]['firstName'] . " " . $authorList[$i]['lastName'];
+                            $author .= " ".$author.", ";
+                        }
                     }
                 }
             }
-            $html .= "</span>";
+
+            $html .= "<span class='zotero_ref_author'>" . $author . ",</span>";
+            
+            /**
+             * Access URL
+             */
+             
             if ( isset($this->_url) ) {
                 $html .= " &laquo; <a href=".$this->_url.">".$this->_title."</a> &raquo;";
             } else {
                 $html .= " &laquo; ".$this->_title." &raquo;";
             }
+            
+            /**
+             * Publisher/editor
+             */
+             
             if ( isset($this->_editor) ) {
                 $html .= ", ".__('on','zotero-notes')." <i>".$this->_editor."</i>";
             }
+            
+            /**
+             * Date of publication
+             */
+             
             if ( isset($this->_date) ) {
                 $html .= ", ".mysql2date( get_option( 'date_format' ), $this->_date);
             }
-            if ( isset($this->_page) ) {
-                $html .= ", ".$this->_page;
-            }
+            
+            /**
+             * Consultation date
+             */
+             
             if ( isset($this->_readon) ) {
                 $html .= " (".__('read on','zotero-notes')." ".mysql2date( get_option( 'date_format' ), $this->_readon) . ")";
             }
+            
+            /**
+             * Other minor information
+             */
+             
+            if ( isset($this->_page) ) {
+                $html .= ", ".$this->_page;
+            }
+
         }
         else {
             $html .= "#err";
