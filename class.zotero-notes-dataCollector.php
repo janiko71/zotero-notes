@@ -81,6 +81,7 @@ class Zotero_Notes_DataCollector {
     static private function _my_curl($URI, $zotero_key) {
 
         $curl = curl_init(filter_var($URI, FILTER_SANITIZE_URL)); // Trust No-One (TNO) ==> filter_input
+        $zotero_key = sanitize_key( $zotero_key );
 
         curl_setopt($curl, CURLOPT_FAILONERROR, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -92,8 +93,8 @@ class Zotero_Notes_DataCollector {
         
         curl_setopt($curl, CURLOPT_HTTPHEADER, array("Zotero-API-Key: " . $zotero_key));
        
-        $response = curl_exec($curl);
-
+        $response = sanitize_text_field( curl_exec( $curl ) );  // TNO
+        
         curl_close($curl);
 
         return $response;
@@ -123,8 +124,7 @@ class Zotero_Notes_DataCollector {
     
     private function _parse($json) {
         
-        // Trust No One : don't forget to sanitize entry
-        // ???
+        // Trust No One : don't forget to sanitize entry (done after the curl call)
         
         $response = [];
 
@@ -146,14 +146,6 @@ class Zotero_Notes_DataCollector {
         // The URL...
         $this->_url = $zotero_data["url"];
 
-        // Author(s) list
-        /*if (array_key_exists("meta.citation_authors", $response)) {
-            // Here it's a string with t-uples (name, firstname)
-            $list = explode(';', $response["meta.citation_authors"]);
-            $this->_authorList = json_encode($list);
-            $this->_authorCount = count($list);
-        }*/
-        
         // Creator summary, if exists
         $this->_creatorSummary = $zotero_meta["creatorSummary"]; 
         
@@ -192,7 +184,6 @@ class Zotero_Notes_DataCollector {
             return $this->_values[$key];
         }
 
-        // ??????????????????????????????????????????????????????????????????????????????????????
         if ($key === 'schema') {
             foreach (self::$TYPES AS $schema => $types) {
                 if (array_search($this->_values['type'], $types)) {

@@ -182,7 +182,7 @@ class Zotero_Notes_ReferencesList {
         include_once plugin_dir_path( __FILE__ ).'class.zotero-notes-citation.php';
 
         /** Loading texts */
-		load_plugin_textdomain( 'zotero_notes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages'  );
+		load_plugin_textdomain( 'zotero-notes', false, dirname( plugin_basename( __FILE__ ) ) . '/languages'  );
 
         /** Register style sheet */
         add_action( 'wp_enqueue_scripts', array( $this, 'register_zotero_notes_plugin_styles' ) );        

@@ -56,8 +56,20 @@ msgid "Enter your settings below:"
 msgstr "Entrez vos réglages ci-dessous :"
 
 # admin/help
-msgid "This extension helps you to include footnotes references in your posts. "
-msgstr "Cette extension vous permet d'inclure des références en notes de bas de page dans vos articles. "
+msgid "This extension helps you to include footnotes references in your posts, "
+msgstr "Cette extension vous permet d'inclure des références en notes de bas de page dans vos articles, "
+
+# admin/help
+msgid "by using a Zotero Library. All you need is a Zotero account with its API (private) access key and the reference ID. "
+msgstr "grâce à l'utilisation d'une bibliothèque Zotero. Tout ce dont vous avez besoin est un compte Zotero avec sa clé privée d'API, ainsi que l'ID de la référence. "
+
+# admin/help
+msgid "Example of use: "
+msgstr "Exemple d'usage : "
+
+# admin/help
+msgid ""
+msgstr ""
 
 # admin/help
 msgid "You can change in this page the shortcode and the attributes used to construct references. "
