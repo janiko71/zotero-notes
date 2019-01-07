@@ -1,38 +1,27 @@
 
-p#zotero_ref_footer {
+#zotero_notes_footer {
     font-size: x-small;
-    line-height: 1em;
+    line-height: 1.2em;
     margin-top: 0px;
-    margin-bottom: 0px;
+    margin-left: 2px;
 }
 
-span#zotero_ref_footer {
-    font-size: x-small;
-    margin-top: 0px;
-    margin-bottom: 0px;
-}
-
-a#zotero_ref_footer {
+#zotero_notes_footer a {
     text-decoration: none;
 }
 
-#div_zotero_ref_footer {
-    margin-top: 0px;
-    margin-bottom: 0px;
+#zotero_notes_footer ol {
+    display: block;
+    margin-left: 2em;
 }
 
-#zotero_ref_footer {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-bottom: 8px;
-    line-height: 1em;
+#zotero_notes_footer ol li {
+    list-style: decimal;
+    list-style-position: outside;
+    margin-bottom: 8px;
 }
 
-.zotero-ref-detail {
-    border: 1px red dotted;
-}
-
-.zotero_ref_author {
+.zotero_notes_author {
     color: darkgrey;
 }
 

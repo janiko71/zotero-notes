@@ -152,11 +152,11 @@ class Zotero_Notes_ReferencesList {
     
             /** Reference table */
             $liste = $this->_liste_references[$the_ID];
-            $content .= "<div id='div_zotero_notes_footer'>";
+            $content .= "<div id='zotero_notes_footer'><ol>";
             foreach ( $liste as $value ) {
                 $content .= $value->display_html();
             }
-            $content .= "</div>";
+            $content .= "</ol></div>";
         }
         
         return $content;

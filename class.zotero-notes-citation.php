@@ -143,18 +143,15 @@ class Zotero_Notes_Citation {
      
     public function display_html() {
 
-        //$html = "<p id='zotero_ref_footer' class='reference-footnote'>";
+        $html = "<li>";
         
-        $html = "<table id='zotero_ref_footer' class='reference-footnote'><tr><td style='width=auto'>";
-        $html .= "<span id='zotero-ref-p" . $this->get_post_id() . "-r" . $this->get_ref_num() . "'>" . $this->_ref_num . ". ";
+        $html .= "<span id='zotero-ref-p" . $this->get_post_id() . "-r" . $this->get_ref_num() . "'> ";
         // Multiple refs
         if ( $this->_occ_nb > 1 )
             $html .= "↑ ".$this->display_letter_level($this->_occ_nb);
         else
             $html .= "<a style='border-bottom: 1px solid white;' href='#note-zotero-ref-p".$this->get_post_id()."-r".$this->get_ref_num()."-o1'>↑ </a>";
 
-        $html .= "</td><td style='width=auto'>";
-        
         if ( isset($this->_title) ) {
             
             /**
@@ -193,7 +190,7 @@ class Zotero_Notes_Citation {
                 }
             }
 
-            $html .= "<span class='zotero_ref_author'>" . $author . ",</span>";
+            $html .= "<span class='zotero_notes_author'>" . $author . ",</span>";
             
             /**
              * Access URL
@@ -242,11 +239,9 @@ class Zotero_Notes_Citation {
         else {
             $html .= "#err";
         }
-        $html .= "</td></tr>";
 
         $html .= "</span>";
-        $html .= "</table>";
-        $html .= "</p>";
+        $html .= "</li>";
 
         return $html;
 
