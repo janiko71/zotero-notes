@@ -150,6 +150,7 @@ class Zotero_Notes_Citation {
             $html .= "↑ ".$this->display_letter_level($this->_occ_nb);
         else
             $html .= "<a style='border-bottom: 1px solid white;' href='#note-zotero-ref-p".$this->get_post_id()."-r".$this->get_ref_num()."-o1'>↑ </a>";
+
         if ( isset($this->_title) ) {
             
             /**

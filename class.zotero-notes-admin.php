@@ -143,18 +143,18 @@ class ZoteroNotesSettingsPage
             if ( strcmp( $old_code, $new_input['code_name'] ) != 0)
                 if ( shortcode_exists( $new_input['code_name'] ) ) {
                     add_settings_error( 'ExistingShortcode', 'ZoteroNotes-e01', 'Shortcode <i>'.$new_input['code_name'].'</i> already set somewhere. Please choose another one.', 'error' );
-                    $new_input['code_name'] = sanitize_key( $old_code );  // Yes, I'm paranoid
+                    $new_input['code_name'] = sanitize_text_field( $old_code );  // Yes, I'm paranoid
                 }
                 else
                     add_settings_error( 'ModifiedShortcode', 'ZoteroNotes-w01', 'Shortcode updated and modified. Take care if you already used the old one ('.$old_code.')!', 'updated' );
         }
         
         if( isset( $input['zotero_id'] ) ) {
-            $new_input['zotero_id'] = sanitize_key( $input['zotero_id'] ); // Should be integer only==>CHECK!
+            $new_input['zotero_id'] = sanitize_text_field( $input['zotero_id'] ); // Should be integer only==>CHECK!
         }
         
         if( isset( $input['zotero_key'] ) ) {
-            $new_input['zotero_key'] = sanitize_key( $input['zotero_key'] ); // Should be alphanumeric only==>CHECK!
+            $new_input['zotero_key'] = sanitize_text_field( $input['zotero_key'] ); // Should be alphanumeric only==>CHECK!
         }
         return $new_input;
     }

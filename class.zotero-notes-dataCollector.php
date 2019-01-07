@@ -81,7 +81,7 @@ class Zotero_Notes_DataCollector {
     static private function _my_curl($URI, $zotero_key) {
 
         $curl = curl_init(filter_var($URI, FILTER_SANITIZE_URL)); // Trust No-One (TNO) ==> filter_input
-        $zotero_key = sanitize_key( $zotero_key );
+        $zotero_key = sanitize_text_field( $zotero_key );
 
         curl_setopt($curl, CURLOPT_FAILONERROR, true);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
@@ -93,8 +93,8 @@ class Zotero_Notes_DataCollector {
         
         curl_setopt($curl, CURLOPT_HTTPHEADER, array("Zotero-API-Key: " . $zotero_key));
        
-        $response = sanitize_text_field( curl_exec( $curl ) );  // TNO
-        
+        $response = curl_exec( $curl );  // TNO
+
         curl_close($curl);
 
         return $response;
