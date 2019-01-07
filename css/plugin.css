@@ -1,6 +1,7 @@
 
 p#zotero_ref_footer {
     font-size: x-small;
+    line-height: 1em;
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -23,6 +24,12 @@ a#zotero_ref_footer {
 #zotero_ref_footer {
     margin-top: 0px;
     margin-bottom: 0px;
+    padding-bottom: 8px;
+    line-height: 1em;
+}
+
+.zotero-ref-detail {
+    border: 1px red dotted;
 }
 
 .zotero_ref_author {

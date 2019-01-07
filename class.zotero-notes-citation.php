@@ -143,7 +143,9 @@ class Zotero_Notes_Citation {
      
     public function display_html() {
 
-        $html = "<p id='zotero_ref_footer' class='reference-footnote'>";
+        //$html = "<p id='zotero_ref_footer' class='reference-footnote'>";
+        
+        $html = "<table id='zotero_ref_footer' class='reference-footnote'><tr><td style='width=auto'>";
         $html .= "<span id='zotero-ref-p" . $this->get_post_id() . "-r" . $this->get_ref_num() . "'>" . $this->_ref_num . ". ";
         // Multiple refs
         if ( $this->_occ_nb > 1 )
@@ -151,6 +153,8 @@ class Zotero_Notes_Citation {
         else
             $html .= "<a style='border-bottom: 1px solid white;' href='#note-zotero-ref-p".$this->get_post_id()."-r".$this->get_ref_num()."-o1'>↑ </a>";
 
+        $html .= "</td><td style='width=auto'>";
+        
         if ( isset($this->_title) ) {
             
             /**
@@ -233,11 +237,16 @@ class Zotero_Notes_Citation {
                 $html .= ", ".$this->_page;
             }
 
+
         }
         else {
             $html .= "#err";
         }
-        $html .= "</span></p>";
+        $html .= "</td></tr>";
+
+        $html .= "</span>";
+        $html .= "</table>";
+        $html .= "</p>";
 
         return $html;
 
