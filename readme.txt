@@ -17,7 +17,7 @@ To use it, simply add your reference using a shortcode you can choose ('zref' by
 
 Because it's a minimal implementation, you need to add the reference ID manually in the code. Maybe later I'll do better ;)
 
-Then a list of all references will be added at the end of the post. 
+Then a list of all references will be added automatically at the end of the post. 
 
 Here are some examples:
 
