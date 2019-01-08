@@ -142,21 +142,28 @@ class Zotero_Notes_ReferencesList {
      
     function zotero_notes_footer( $content ) {
         
-        $the_ID = get_the_ID();
-        $count = count( $this->_liste_references[$the_ID] );
-        
-        if ( $count > 0 ) {
-
-            /** Title */
-            $content .= "<h3 id='references-head' class='footer_references'>" . __('References','zotero-notes') . "</h3>";
+        // Check if we're inside the main loop in a single post page.
+        /*if ( is_single() && in_the_loop() && is_main_query() ) {
+            return "";
+        }*/
+        if ( is_single() ) {
     
-            /** Reference table */
-            $liste = $this->_liste_references[$the_ID];
-            $content .= "<div id='zotero_notes_footer'><ol>";
-            foreach ( $liste as $value ) {
-                $content .= $value->display_html();
+            $the_ID = get_the_ID();
+            $count = count( $this->_liste_references[$the_ID] );
+            
+            if ( $count > 0 ) {
+    
+                /** Title */
+                $content .= "<h3 id='references-head' class='footer_references'>" . __('References','zotero-notes') . "</h3>";
+        
+                /** Reference table */
+                $liste = $this->_liste_references[$the_ID];
+                $content .= "<div id='zotero_notes_footer'><ol>";
+                foreach ( $liste as $value ) {
+                    $content .= $value->display_html();
+                }
+                $content .= "</ol></div>";
             }
-            $content .= "</ol></div>";
         }
         
         return $content;
