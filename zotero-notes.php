@@ -1,7 +1,7 @@
 <?php
 /*
  * Plugin Name: Zotero Notes
- * Description: Footnotes references using Zotero
+ * Description: Simple footnote references using Zotero
  * Version: 1.0.0
  * Author: Janiko  
  * Author URI: http://geba.fr

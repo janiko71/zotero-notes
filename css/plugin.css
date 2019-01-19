@@ -25,4 +25,13 @@
     color: darkgrey;
 }
 
+.sup-ref-note {
+    font-size:8px;
+    border: none;
+}
+
+a.sup-ref-note {
+    text-decoration: none;
+    border: none;
+}
 

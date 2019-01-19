@@ -102,22 +102,8 @@ class Zotero_Notes_DataCollector {
     }
 
     /**
-     * Parses Citoid JSON and extracts data.
+     * Parses JSON and extracts data.
      *
-     * title
-     * date
-     * DOI
-     * url
-     * accessDate
-     * notes[]
-     * tags[]
-     * creators[]
-     *   firstName
-     *   lastName
-     *   creatorType
-     * itemType
-     * language
-     * 
      * @param $json    JSON to parse
      * @return metadata
      */
@@ -131,7 +117,7 @@ class Zotero_Notes_DataCollector {
         $zotero_api_response = json_decode($json, true);
         $zotero_data = $zotero_api_response["data"];
         $zotero_meta = $zotero_api_response["meta"];
-        
+
         /**
          * Here, $zotero_api_response contains a lot of tags with information. 
          * Let's gather the most relevant for our citations.
@@ -164,10 +150,18 @@ class Zotero_Notes_DataCollector {
         // (Last) Access Date
         $this->_readon = $zotero_data["accessDate"];
 
-        // Publisher/editor
-        $this->_editor = $zotero_data["publisher"];
+        // Publisher/editor, depending on media type
+        $itemType = $zotero_data["itemType"];
+        if (strcmp($itemType, "newspaperArticle") == 0) {
+            $this->_editor = $zotero_data["libraryCatalog"];
+        } else if (strcmp($itemType, "blogPost") == 0) {
+            $this->_editor = $zotero_data["blogTitle"];
+        } else if (strcmp($itemType, "webpage") == 0) {
+            $this->_editor = $zotero_data["websiteTitle"];
+        } else {
+            $this->_editor = $zotero_data["publisher"];    
+        }
 
-        return true;
     }
     
 

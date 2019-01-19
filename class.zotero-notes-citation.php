@@ -208,7 +208,7 @@ class Zotero_Notes_Citation {
              
             if ( isset($this->_editor) ) {
                 $html .= ", ".__('on','zotero-notes')." <i>".$this->_editor."</i>";
-            }
+            } 
             
             /**
              * Date of publication

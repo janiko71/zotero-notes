@@ -1,7 +1,7 @@
 === Zotero Notes ===
 Contributors: janiko
 Tags: zotero, footnotes, comments, reference, citation
-Requires at least: 4.6
+Requires at least: 4.7
 Tested up to: 5.0.2
 Stable tag: trunk
 License: GPLv2 or later

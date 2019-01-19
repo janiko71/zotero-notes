@@ -123,8 +123,8 @@ class Zotero_Notes_ReferencesList {
         
         ob_start();
         $current_reference = $this->handle_reference( new Zotero_Notes_Citation( $atts, $content ) );
-        $res = "<sup style='font-size:8px;vertical-align:super' id='note-" . $current_reference->get_anchor() . "'>";
-        $res .= "<a href='#zotero-ref-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>[" . $current_reference->get_ref_num() . "]</a></sup>";
+        $res = "<sup class='sup-ref-note' id='note-" . $current_reference->get_anchor() . "'>";
+        $res .= "<a class='sup-ref-note' href='#zotero-ref-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>[" . $current_reference->get_ref_num() . "]</a></sup>";
         print( $res );
 
         return ob_get_clean();
