@@ -20,6 +20,7 @@ class Zotero_Notes_ReferencesList {
      * @see Zotero_Notes_ReferencesList class
      */
      
+    private $_post_id;
     private $_liste_references = array();
 
     /**
@@ -146,7 +147,7 @@ class Zotero_Notes_ReferencesList {
         /*if ( is_single() && in_the_loop() && is_main_query() ) {
             return "";
         }*/
-        if ( is_single() ) {
+        if ( is_single() || is_page() ) {
     
             $the_ID = get_the_ID();
             $count = count( $this->_liste_references[$the_ID] );

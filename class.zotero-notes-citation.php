@@ -155,12 +155,12 @@ class Zotero_Notes_Citation {
         if ( isset($this->_title) ) {
             
             /**
-             * Language, if exists
+             * Language, if exists (2 first char.)
              */
              
             if ( isset($this->_lang)) {
                 if ($this->_lang != "") {
-                    $html .= " (".$this->_lang.") ";
+                    $html .= " (" . substr($this->_lang, 0, 2) . ") ";
                 }
             }
             

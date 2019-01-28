@@ -56,12 +56,18 @@ class Zotero_Notes_DataCollector {
     private function fetch($item_id, $zotero_id, $zotero_key) {
         
         /**
-         * First, we try with wikipedia Citroid API, but the result may be incomplete...
-         * However, it's very useful for PDF documents.
+         * Let's fetch the Zotero reference. If it exists in cache, no need to retrieve it (if not too old).
          */
         
         $curl_url_zotero = self::ZOTERO_API_URL . "/users/" . $zotero_id . "/items/" . $item_id . "?v=" . self::ZOTERO_API_VERSION;
-        $zotero_response = self::_my_curl($curl_url_zotero, $zotero_key);
+        
+        /* Is it in cache? */
+        $transient_key = $item_id . ":" . $zotero_id;
+        if ( false === ( $zotero_response = get_transient( $transient_key ) ) ) {
+            // It wasn't there, so regenerate the data and save the transient
+            $zotero_response = self::_my_curl($curl_url_zotero, $zotero_key);
+            set_transient( $transient_key, $zotero_response, 12 * HOUR_IN_SECONDS );
+        }
 
         // Then we parse the response to find the information
         $result = self::_parse($zotero_response);
@@ -91,7 +97,7 @@ class Zotero_Notes_DataCollector {
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_USERAGENT, filter_input(INPUT_SERVER, 'HTTP_USER_AGENT'));  // TNO
         
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array("Zotero-API-Key: " . $zotero_key));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array("Zotero-API-Key: " . $zotero_key, "Cache-Control: max-age=3600; public"));
        
         $response = curl_exec( $curl );  // TNO
 

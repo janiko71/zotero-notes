@@ -50,6 +50,15 @@ An answer to that question.
 
 == Changelog ==
 
+= 1.0.3 =
+Language parameter updated
+
+= 1.0.2 =
+Added to pages (not only posts)
+
+= 1.0.1 =
+Some caching added (to prevent too frequent curl calls).
+
 = 1.0.0 =
 * First public release
 * Minimalist settings and features but fully functionnal (I hope)

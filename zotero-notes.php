@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Zotero Notes
  * Description: Simple footnote references using Zotero
- * Version: 1.0.0
+ * Version: 1.0.3
  * Author: Janiko  
  * Author URI: http://geba.fr
  * Text Domain: zotero-notes
@@ -18,7 +18,6 @@ class Zotero_Notes_Plugin {
      * Initialisation of the plugin. 
      */
 
-     
     public function __construct() {
 
         /** Add settings at activation */
@@ -45,6 +44,8 @@ class Zotero_Notes_Plugin {
 
         new zotero_notes_ReferencesList();
     }
+
+    
 }
 
 new Zotero_Notes_Plugin();
