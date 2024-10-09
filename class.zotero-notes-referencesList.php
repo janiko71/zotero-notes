@@ -62,7 +62,10 @@ class Zotero_Notes_ReferencesList {
      
     function add_reference( $the_ID, $reference ) {
 
-        $ref_num = count( $this->_liste_references[ $the_ID ] ) + 1;
+		if ( empty( $this->_liste_references[ $the_ID ] ) )
+			$ref_num = 1;
+		else
+        	$ref_num = count( $this->_liste_references[ $the_ID ] ) + 1;
         $reference->set_ref_num( $ref_num );
         $this->_liste_references[ $the_ID ][] = $reference;
 
@@ -95,7 +98,7 @@ class Zotero_Notes_ReferencesList {
 
         } else {
 
-            /** Tricker: we have a reference name; so does it already exists in the list ? */
+            /** More tricky: we have a reference name; so does it already exists in the list ? */
             $reference_multiple = $this->get_reference_by_name( $the_ID, $reference_name );
             if ( $reference_multiple != null) {
 
@@ -125,7 +128,7 @@ class Zotero_Notes_ReferencesList {
         ob_start();
         $current_reference = $this->handle_reference( new Zotero_Notes_Citation( $atts, $content ) );
         $res = "<sup class='sup-ref-note' id='note-" . $current_reference->get_anchor() . "'>";
-        $res .= "<a class='sup-ref-note' href='#zotero-ref-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>[" . $current_reference->get_ref_num() . "]</a></sup>";
+        $res .= "<a class='sup-ref-note' href='#zotero-ref-p" . $current_reference->get_post_id() . "-r" . $current_reference->get_ref_num() . "'>" . $current_reference->get_ref_num() . "</a></sup>";
         print( $res );
 
         return ob_get_clean();
@@ -150,7 +153,10 @@ class Zotero_Notes_ReferencesList {
         if ( is_single() || is_page() ) {
     
             $the_ID = get_the_ID();
-            $count = count( $this->_liste_references[$the_ID] );
+			if ( empty( $this->_liste_references[$the_ID] ) )
+				$count = 0;
+			else
+            	$count = count( $this->_liste_references[$the_ID] );
             
             if ( $count > 0 ) {
     
@@ -201,7 +207,7 @@ class Zotero_Notes_ReferencesList {
         
         /** Creating the shortcode with the name provided in the admin page */
         add_shortcode( $shortcode, array( $this, 'zotero_notes_shortcode' ));
-        add_filter( 'the_content', array( $this, 'zotero_notes_footer' ), 99 );
+        add_filter( 'the_content', array( $this, 'zotero_notes_footer' ), 15 );
     }
 
 }

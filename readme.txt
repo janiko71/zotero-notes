@@ -2,7 +2,7 @@
 Contributors: janiko
 Tags: zotero, footnotes, comments, reference, citation
 Requires at least: 4.7
-Tested up to: 5.0.2
+Tested up to: 6.6.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -49,6 +49,12 @@ An answer to that question.
 2. The corresponding post (in the new WordPress Editor). The 1st reference is used once, the 2nd twice (with a reference name).
 
 == Changelog ==
+
+= 1.2.0 =
+Compatibility upgrade
+
+= 1.1.1 =
+Display rules modified.
 
 = 1.0.3 =
 Language parameter updated

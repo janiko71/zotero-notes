@@ -143,7 +143,8 @@ class Zotero_Notes_Citation {
      
     public function display_html() {
 
-        $html = "<li>";
+        $html = "<div id='footer_zotero'>";
+        $html .= "<li>";
         
         $html .= "<span id='zotero-ref-p" . $this->get_post_id() . "-r" . $this->get_ref_num() . "'> ";
         // Multiple refs
@@ -152,6 +153,7 @@ class Zotero_Notes_Citation {
         else
             $html .= "<a style='border-bottom: 1px solid white;' href='#note-zotero-ref-p".$this->get_post_id()."-r".$this->get_ref_num()."-o1'>↑ </a>";
 
+        // The content_id must match a Zotero Reference, else it will be displayed as is
         if ( isset($this->_title) ) {
             
             /**
@@ -190,7 +192,9 @@ class Zotero_Notes_Citation {
                 }
             }
 
-            $html .= "<span class='zotero_notes_author'>" . $author . ",</span>";
+            if ( strcmp( $author, "" ) ) {
+                $html .= "<span class='zotero_notes_author'>" . $author . ",</span>";
+            }
             
             /**
              * Access URL
@@ -207,7 +211,12 @@ class Zotero_Notes_Citation {
              */
              
             if ( isset($this->_editor) ) {
-                $html .= ", ".__('on','zotero-notes')." <i>".$this->_editor."</i>";
+                $editor = $this->_editor;
+                if ( strcmp("", $editor) == 0 ) {
+                    $editor = parse_url($this->_url, PHP_URL_HOST);
+                }
+                $html .= " ".__('on','zotero-notes')." <i>".$editor."</i>";
+                    
             } 
             
             /**
@@ -215,14 +224,16 @@ class Zotero_Notes_Citation {
              */
              
             if ( isset($this->_date) ) {
-                $html .= ", ".mysql2date( get_option( 'date_format' ), $this->_date);
+                if ( strcmp("", $this->_date) ) {
+                    $html .= ", ".mysql2date( get_option( 'date_format' ), $this->_date);
+                }
             }
             
             /**
              * Consultation date
              */
              
-            if ( isset($this->_readon) ) {
+            if ( strcmp("", ($this->_readon)) ) {
                 $html .= " (".__('read on','zotero-notes')." ".mysql2date( get_option( 'date_format' ), $this->_readon) . ")";
             }
             
@@ -237,11 +248,13 @@ class Zotero_Notes_Citation {
 
         }
         else {
-            $html .= "#err";
+            //$html .= "#err";
+            $html .= $this->_content_id;
         }
 
         $html .= "</span>";
         $html .= "</li>";
+        $html .= "</div>";
 
         return $html;
 

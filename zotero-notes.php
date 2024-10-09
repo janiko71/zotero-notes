@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Zotero Notes
  * Description: Simple footnote references using Zotero
- * Version: 1.0.3
+ * Version: 1.2.0
  * Author: Janiko  
  * Author URI: http://geba.fr
  * Text Domain: zotero-notes

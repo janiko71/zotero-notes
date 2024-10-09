@@ -1,9 +1,9 @@
 
 #zotero_notes_footer {
+    margin-left: 2px;
     font-size: x-small;
     line-height: 1.2em;
     margin-top: 0px;
-    margin-left: 2px;
 }
 
 #zotero_notes_footer a {
@@ -12,13 +12,15 @@
 
 #zotero_notes_footer ol {
     display: block;
-    margin-left: 2em;
+    margin-left: 2px;
 }
 
 #zotero_notes_footer ol li {
     list-style: decimal;
     list-style-position: outside;
     margin-bottom: 8px;
+    margin-left: 4em;
+    margin-right: 2em;
 }
 
 .zotero_notes_author {
@@ -26,8 +28,9 @@
 }
 
 .sup-ref-note {
-    font-size:8px;
+    font-size:9px;
     border: none;
+    margin-left: 1px;
 }
 
 a.sup-ref-note {
