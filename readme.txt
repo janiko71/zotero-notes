@@ -3,7 +3,7 @@ Contributors: janiko
 Tags: zotero, footnotes, comments, reference, citation
 Requires at least: 4.7
 Tested up to: 6.6.2
-Stable tag: trunk
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +50,8 @@ An answer to that question.
 
 == Changelog ==
 
-= 1.2.0 =
-Compatibility upgrade
+= 1.2.3 =
+Securing the plugin (sanitazing, escaping, etc.)
 
 = 1.1.1 =
 Display rules modified.

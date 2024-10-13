@@ -213,7 +213,7 @@ class Zotero_Notes_Citation {
             if ( isset($this->_editor) ) {
                 $editor = $this->_editor;
                 if ( strcmp("", $editor) == 0 ) {
-                    $editor = parse_url($this->_url, PHP_URL_HOST);
+                    $editor = wp_parse_url($this->_url, PHP_URL_HOST);
                 }
                 $html .= " ".__('on','zotero-notes')." <i>".$editor."</i>";
                     

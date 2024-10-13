@@ -2,7 +2,7 @@
 /*
  * Plugin Name: Zotero Notes
  * Description: Simple footnote references using Zotero
- * Version: 1.2.0
+ * Version: 1.2.3
  * Author: Janiko  
  * Author URI: http://geba.fr
  * Text Domain: zotero-notes
@@ -25,7 +25,7 @@ class Zotero_Notes_Plugin {
         
         /** Add translation(s) */
         function zotero_notes_load_plugin_textdomain() {
-            load_plugin_textdomain( 'zotero-notes', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+            load_plugin_textdomain( 'zotero-notes' );
         }
         add_action( 'plugins_loaded', 'zotero_notes_load_plugin_textdomain' );
         

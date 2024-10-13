@@ -5,18 +5,18 @@
         $screen = get_current_screen();
         $screen->add_help_tab( array(
         	'id'      => 'overview',
-        	'title'   => __('Overview'),
+        	'title'   => esc_attr__('Overview','zotero-notes'),
         	'content' => '<p>'.__('This extension helps you to include footnotes references in your posts, ','zotero-notes').
-        	__('by using a Zotero Library. All you need is a Zotero account with its API (private) access key and the reference ID. ','zotero-notes').
+        	esc_attr__('by using a Zotero Library. All you need is a Zotero account with its API (private) access key and the reference ID. ','zotero-notes').
         	'</p><p>'.
-        	__('Example of use: ','zotero-notes').
+        	esc_attr__('Example of use: ','zotero-notes').
         	'</p><p>'.
-        	__('<code>...blabla[zref]1A6BE9[/zref] blablabla...</code> ','zotero-notes').
+        	esc_attr__('<code>...blabla[zref]1A6BE9[/zref] blablabla...</code> ','zotero-notes').
         	'</p><p>'.
-        	__('You can change in this page the shortcode and the attributes used to construct references. ','zotero-notes').
-        	__('But you should keep in mind the posts written with the old codes won\'t be parsed anymore! ','zotero-notes').
-        	__('Consequently, you should only change these settings before using this extension. ','zotero-notes').'</p><p>'.
-        	__('A footnote will be  added (automatically) at the end of the post.','zotero-notes').
+        	esc_attr__('You can change in this page the shortcode and the attributes used to construct references. ','zotero-notes').
+        	esc_attr__('But you should keep in mind the posts written with the old codes won\'t be parsed anymore! ','zotero-notes').
+        	esc_attr__('Consequently, you should only change these settings before using this extension. ','zotero-notes').'</p><p>'.
+        	esc_attr__('A footnote will be  added (automatically) at the end of the post.','zotero-notes').
         	'</p>'
         ) );
 
@@ -69,7 +69,7 @@ class ZoteroNotesSettingsPage
         $this->options = get_option( 'zotero_notes_option_name' );
         ?>
         <div class="wrap">
-            <h1><?php _e( 'Zotero Notes plugin Page', 'zotero-notes' ) ?></h1>
+            <h1><?php esc_attr__( 'Zotero Notes plugin Page', 'zotero-notes' ) ?></h1>
             <form method="post" action="options.php">
             <?php
                 // This prints out all hidden setting fields
@@ -97,14 +97,14 @@ class ZoteroNotesSettingsPage
 
         add_settings_section(
             'setting_section_id', // ID
-            __( 'Zotero Notes Plugin Settings', 'zotero-notes' ), // Title
+            esc_attr__( 'Zotero Notes Plugin Settings', 'zotero-notes' ), // Title
             array( $this, 'print_section_info' ), // Callback
             'ZoteroNotes-setting-admin' // Page
         );  
 
         add_settings_field(
             'code_name', 
-            __( 'Shortcode Name', 'zotero-notes' ), // Shortcode name
+            esc_attr__( 'Shortcode Name', 'zotero-notes' ), // Shortcode name
             array( $this, 'code_name_callback' ), // Callback
             'ZoteroNotes-setting-admin', // Page
             'setting_section_id' // Section           
@@ -112,7 +112,7 @@ class ZoteroNotesSettingsPage
 
         add_settings_field(
             'zotero_id', // ID
-            __( 'Zotero User ID (API)', 'zotero-notes' ), // Zotero's account ID
+            esc_attr__( 'Zotero User ID (API)', 'zotero-notes' ), // Zotero's account ID
             array( $this, 'zotero_id_callback' ), // Callback
             'ZoteroNotes-setting-admin', // Page
             'setting_section_id' // Section           
@@ -120,7 +120,7 @@ class ZoteroNotesSettingsPage
 
         add_settings_field(
             'zotero_key', // ID
-            __( 'Zotero Private Key (API)', 'zotero-notes' ), // Zotero Private Key (API)
+            esc_attr__( 'Zotero Private Key (API)', 'zotero-notes' ), // Zotero Private Key (API)
             array( $this, 'zotero_key_callback' ), // Callback
             'ZoteroNotes-setting-admin', // Page
             'setting_section_id' // Section           
@@ -164,7 +164,7 @@ class ZoteroNotesSettingsPage
      */
     public function print_section_info()
     {
-        print __( 'Enter your settings below:', 'zotero-notes' );
+        print esc_attr__( 'Enter your settings below:', 'zotero-notes' );
     }
 
     /** 
